@@ -17,6 +17,11 @@ UdpComm::~UdpComm()
 {
 }
 
+void UdpComm::SetKcpConv(unsigned int conv) {
+    Q_UNUSED(conv);
+    //unimpliment
+}
+
 void UdpComm::SetKcpMode(int mode) {
     Q_UNUSED(mode);
     //unimpliment

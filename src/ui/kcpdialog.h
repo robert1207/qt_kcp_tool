@@ -41,6 +41,8 @@ private slots:
 
     void on_comboBoxNetType_currentIndexChanged(int index);
 
+    void on_comboBoxKcpMode_currentIndexChanged(int index);
+
 private:
     void InitUI();
     void SetOpenBtnStatus(bool is_open);

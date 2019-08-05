@@ -23,6 +23,10 @@ NetManager::~NetManager()
     if (comm_p != nullptr) Close();
 }
 
+void NetManager::SetKcpConv(unsigned int conv) {
+    kcp_conv_ = conv;
+}
+
 void NetManager::SetKcpMode(Comm::KcpMode mode) {
     kcp_mode_ = mode;
 }
@@ -47,6 +51,7 @@ int NetManager::Open(QString des_ip, quint16 des_port) {
         return comm_p->Open(des_ip, des_port);
     } else {
         comm_p = new KcpComm();
+        comm_p->SetKcpConv(kcp_conv_);
         comm_p->SetKcpMode(kcp_mode_);
         comm_p->SetNetType(net_type_);
         ConnectSignals();

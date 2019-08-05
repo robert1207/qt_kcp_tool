@@ -21,6 +21,8 @@ KcpDialog::KcpDialog(QWidget *parent) :
     server_client_type_list_.append("UDPServer");
     server_client_type_list_.append("UDP Client");
 
+
+
     ui->setupUi(this);
     InitUI();
 
@@ -49,6 +51,8 @@ void KcpDialog::InitUI() {
     ui->lineEditDesPort->setText("2009");
 
     recv_str_cache_ = "";
+
+    ui->lineEditKCPconv->setText("11223344");
 }
 
 void KcpDialog::SetNetTypeStatus(bool is_enable) {
@@ -90,6 +94,20 @@ void KcpDialog::on_pushButtonOpen_clicked()
         //kcp mode
         int kcp_mode_index = ui->comboBoxKcpMode->currentIndex();
         netmanager_p->SetKcpMode(kcp_mode_index);
+
+        if(kcp_mode_index != 0) {
+            QString kcp_conv_str = ui->lineEditKCPconv->text();
+            if(kcp_conv_str.isEmpty()) {
+                Toast::showTip(QApplication::translate("Dialog", "Please set kcp conv in hex !"));
+                return;
+            }
+
+            QByteArray temp;
+            StringUtil::StringToHex(kcp_conv_str, temp);
+            unsigned int kcp_conv_uint = static_cast<unsigned int>(temp.toInt());
+
+            netmanager_p->SetKcpConv(kcp_conv_uint);
+        }
 
         //net type
         int net_type_index = ui->comboBoxNetType->currentIndex();
@@ -190,5 +208,16 @@ void KcpDialog::on_comboBoxNetType_currentIndexChanged(int index)
     } else { //client
         ui->lineEditDesIp->show();
         ui->destinationLabel->show();
+    }
+}
+
+void KcpDialog::on_comboBoxKcpMode_currentIndexChanged(int index)
+{
+    if(index == 0) { //udp
+        ui->lineEditKCPconv->hide();
+        ui->labelkcpconv->hide();
+    } else {
+        ui->lineEditKCPconv->show();
+        ui->labelkcpconv->show();
     }
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>301</height>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -129,6 +129,16 @@
     <layout class="QVBoxLayout" name="rightVLayout">
      <item>
       <widget class="QComboBox" name="comboBoxKcpMode"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelkcpconv">
+       <property name="text">
+        <string>KCP conv (in hex)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditKCPconv"/>
      </item>
      <item>
       <widget class="QComboBox" name="comboBoxNetType"/>

@@ -39,6 +39,7 @@ public:
 
     static Kcp* GetInstance();
 
+    void SetKcpConv(unsigned int conv);
     void SetMode(Mode mode);
     void SetMode(int mode);
     void Open();
@@ -63,6 +64,7 @@ private:
 
 private:
     bool is_open_;
+    unsigned int conv_;
     int mode_;
     ikcpcb *kcp_p;
     static Kcp *instance_;

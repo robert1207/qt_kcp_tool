@@ -42,6 +42,7 @@ public:
         Client
     };
 
+    virtual void SetKcpConv(unsigned int conv) = 0;
     virtual void SetKcpMode(int mode) = 0;
     virtual void SetNetType(int type) = 0;
     virtual int Open(QString des_ip, quint16 des_port) = 0;

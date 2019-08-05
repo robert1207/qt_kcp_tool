@@ -32,6 +32,10 @@ Kcp*  Kcp::GetInstance() {
     return instance_;
 }
 
+void Kcp::SetKcpConv(unsigned int conv) {
+    conv_ = conv;
+}
+
 void  Kcp::SetMode(Mode mode) {
     mode_ = mode;
 }
@@ -48,7 +52,7 @@ void Kcp::WriteKcpLog(const char *log, struct IKCPCB *kcp, void *user) {
 
 void Kcp::Open() {
 
-    kcp_p = ikcp_create(0x11223344, static_cast<void*>(0));
+    kcp_p = ikcp_create(conv_, static_cast<void*>(0));
     kcp_p->output = DoOutput;
     /*
     kcp_p->writelog = WriteKcpLog;

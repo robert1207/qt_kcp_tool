@@ -31,6 +31,8 @@ public:
          return &Singleton<HYKT::NetManager>::instance();
     }
 
+    void SetKcpConv(unsigned int conv);
+
     void SetKcpMode(Comm::KcpMode mode);
     void SetKcpMode(int mode);
 
@@ -50,6 +52,7 @@ private:
     void DisconnectSignals();
 
 private:
+    unsigned int kcp_conv_;
     int kcp_mode_;
     int net_type_;
     Comm *comm_p;

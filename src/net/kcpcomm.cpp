@@ -20,6 +20,10 @@ KcpComm::~KcpComm()
 {
 }
 
+void KcpComm::SetKcpConv(unsigned int conv) {
+    kcp_p->SetKcpConv(conv);
+}
+
 void KcpComm::SetKcpMode(int mode) {
     kcp_p->SetMode(mode);
 }

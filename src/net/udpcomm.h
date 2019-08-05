@@ -24,6 +24,7 @@ public:
     UdpComm();
     ~UdpComm() override;
 
+    virtual void SetKcpConv(unsigned int conv) override;
     virtual int Open(QString des_ip, quint16 des_port) override;
     virtual void Close() override;
     virtual int Send(char *data, int len) override;
